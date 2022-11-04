@@ -58,8 +58,10 @@ app.post("/",(req, res) => {
       }));
 });
 
-app.listen(3000, () => {
-    console.log(`app is listening on ${port}`)
-})
+(async () => {
+    app.listen(port, async () => {
+      console.log(` API listening on ${port}`);
+    });
+  })();
 
 export default app;
