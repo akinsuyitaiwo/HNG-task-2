@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { formatInterface, postInterface, PostAnswers, operation } from "./utils/interface"
+import { formatInterface, postInterface, PostResult, operation } from "./utils/interface"
 import { errorResponse, handleError } from "./utils/responses"
 
 const app = express()
@@ -32,20 +32,21 @@ app.post("/",(req, res) => {
         }
         const X = Number(x);
         const Y = Number(y);
-    let answer;
+    let result;
     if(operation_type === "addition"){
-        answer = X + Y;
+        result
+         = X + Y;
     }else if(operation_type === "multiplication"){
-        answer = X * Y;
+        result = X * Y;
     }else if(operation_type === "subtraction"){
-        answer = X - Y;
+        result = X - Y;
     }else{
         return errorResponse(res, 400, "Invalid operation" )
     }
-    const outcome : PostAnswers ={
+    const outcome : PostResult ={
         slackUsername:"akinsuyitaiwo",
         operation_type,
-        answer
+        result
     };
     return res.json(outcome)
     }catch (error){

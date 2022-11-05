@@ -15,8 +15,8 @@ export interface postInterface{
     x: number,
     y: number
 }
-export interface PostAnswers{
+export interface PostResult{
     slackUsername?: string;
     operation_type : operation;
-    answer? : number
+    result? : number
 }
